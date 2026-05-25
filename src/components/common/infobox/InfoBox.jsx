@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { management } from "../dummydata/DummyData.js";
 import Profile from "../../../assets/icons/profile_icon.png";
 import Profile2 from "../../../assets/icons/profile_icon2.png";
 

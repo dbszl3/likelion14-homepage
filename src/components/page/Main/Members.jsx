@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import TopSection from "../TopSection/TopSection";
-import { management } from "../../common/dummydata/DummyData.js";
-import { babylion } from "../../common/dummydata/DummyData.js";
+import { management, babylion, members, babymembers } from "../../../constants/memberDummyData.js";
 import InfoBox from "../../common/infobox/InfoBox.jsx";
+import { useParams } from "react-router-dom";
 
 const Div = styled.div`
     background: var(--BG-GRAY, #FAFBF8);
@@ -253,6 +253,13 @@ const BabyBackMember = styled.div`
 `;
 
 export default function Members() {
+
+    const { generation } = useParams();
+    const currentGeneration = Number(generation) || 14; // 현재 기수
+
+    const managementData = currentGeneration === 14 ? management : members;
+    const babyLionData = currentGeneration === 14 ? babylion : babymembers;
+
     return (
         <Div>
             <TopSection />
@@ -264,13 +271,13 @@ export default function Members() {
                         <RepresentContainer>
                             <Representative>
                                 <TitleP><TitleSpan>대표</TitleSpan></TitleP>
-                                {management.filter((member) => member.role === "대표").map((member) => (
+                                {managementData.filter((member) => member.role === "대표").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </Representative>
                             <ViceRepresentative>
                                 <TitleP><TitleSpan>부대표</TitleSpan></TitleP>
-                                {management.filter((member) => member.role === "부대표").map((member) => (
+                                {managementData.filter((member) => member.role === "부대표").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </ViceRepresentative>
@@ -278,7 +285,7 @@ export default function Members() {
                         <PoContainer>
                             <TitleP><TitleSpan>PO</TitleSpan></TitleP>
                             <PoMember>
-                                {management.filter((member) => member.role === "PO").map((member) => (
+                                {managementData.filter((member) => member.role === "PO").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </PoMember>
@@ -286,7 +293,7 @@ export default function Members() {
                         <FrontContainer>
                             <TitleP><TitleSpan>FRONTEND</TitleSpan></TitleP>
                             <FrontMember>
-                                {management.filter((member) => member.role === "FRONTEND").map((member) => (
+                                {managementData.filter((member) => member.role === "FRONTEND").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </FrontMember>
@@ -294,7 +301,7 @@ export default function Members() {
                         <BackContainer>
                             <TitleP><TitleSpan>BACKEND</TitleSpan></TitleP>
                             <BackMemebr>
-                                {management.filter((member) => member.role === "BACKEND").map((member) => (
+                                {managementData.filter((member) => member.role === "BACKEND").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </BackMemebr>
@@ -307,7 +314,7 @@ export default function Members() {
                         <BabyPo>
                             <BabyP><BabySpan>PO</BabySpan></BabyP>
                             <BabyPoMember>
-                                {babylion.filter((member) => member.role === "PO").map((member) => (
+                                {babyLionData.filter((member) => member.role === "PO").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </BabyPoMember>
@@ -315,7 +322,7 @@ export default function Members() {
                         <BabyFront>
                             <BabyP><BabySpan>FRONTEND</BabySpan></BabyP>
                             <BabyFrontMember>
-                                {babylion.filter((member) => member.role === "FRONTEND").map((member) => (
+                                {babyLionData.filter((member) => member.role === "FRONTEND").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </BabyFrontMember>
@@ -323,7 +330,7 @@ export default function Members() {
                         <BabyBack>
                             <BabyP><BabySpan>BACKEND</BabySpan></BabyP>
                             <BabyBackMember>
-                                {babylion.filter((member) => member.role === "BACKEND").map((member) => (
+                                {babyLionData.filter((member) => member.role === "BACKEND").map((member) => (
                                     <InfoBox key={member.id} name={member.name} major={member.major} />
                                 ))}
                             </BabyBackMember>
