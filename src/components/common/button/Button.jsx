@@ -51,13 +51,13 @@ export default function Button() {
             <OptionBox $active={pathname === "/" || pathname === "/members"} onClick={() => navigate("/")}> 
                 <OptionP><OptionSpan>14기</OptionSpan></OptionP>
             </OptionBox> 
-            <OptionBox $active={pathname === "/members13"} onClick={() => navigate("/members13")}>
+            <OptionBox $active={pathname === "/members/13"} onClick={() => navigate("/members/13")}>
                 <OptionP><OptionSpan>13기</OptionSpan></OptionP>
             </OptionBox>
-            <OptionBox $active={pathname === "/members12"} onClick={() => navigate("/members12")}>
+            <OptionBox $active={pathname === "/members/12"} onClick={() => navigate("/members/12")}>
                 <OptionP><OptionSpan>12기</OptionSpan></OptionP>
             </OptionBox>
-            <OptionBox $active={pathname === "/members11"} onClick={() => navigate("/members11")}>
+            <OptionBox $active={pathname === "/members/11"} onClick={() => navigate("/members/11")}>
                 <OptionP><OptionSpan>11기</OptionSpan></OptionP>
             </OptionBox>
         </Option>
